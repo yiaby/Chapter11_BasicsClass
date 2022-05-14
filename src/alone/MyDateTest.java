@@ -16,20 +16,30 @@ class MyDate{
 	public boolean equals(Object obj) {
 		if(obj instanceof MyDate) {
 			MyDate date = (MyDate)obj;
-		 if(this.day == date.day && this.month == date.month && this.year == date.year) {
-			 return true;
-		 }else 
-			 return false;
+		  
+		return (this.day == date.day && this.month == date.month && this.year == date.year);}
+		
+		else {
+			return false;
 		}
-		return false;
 	}
+	@Override
+	public int hashCode() {
+		
+		return year*10000 + month*100 + day;
+		
+		
+	}
+
 }
 public class MyDateTest {
 
 	public static void main(String[] args) {
-		MyDate date1 = new MyDate(9,18,2022);
-		MyDate date2 = new MyDate(9,18,2022);
+		MyDate date1 = new MyDate(18,9,2022);
+		MyDate date2 = new MyDate(18,9,2022);
 		System.out.println(date1.equals(date2));
+		System.out.println(date1.hashCode());
+		System.out.println(date2.hashCode());
 	}
 
 }
